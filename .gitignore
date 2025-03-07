@@ -23,7 +23,7 @@
 hs_err_pid*
 replay_pid*
 
-# Ignorisanje Maven target direktorijuma
+
 target/
 
 # Maven-specific files
@@ -52,5 +52,5 @@ build/
 # VS Code settings
 .vscode/
 
-# Ignorisanje specifičnih Maven generisanih fajlova
 ezderm-service/target/
+ezderm-service/target/maven-status/maven-compiler-plugin/compile/default-compile/
