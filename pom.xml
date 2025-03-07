@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>com.ezderm</groupId>
 	<artifactId>ezderm-parent</artifactId>
-	<name>ezderm-parent</name>
+	<name>ezderm</name>
 	<description>Ezderm Parent Project </description>
 	<version>1.0.0</version>
 	
