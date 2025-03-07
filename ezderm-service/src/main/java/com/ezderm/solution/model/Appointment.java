@@ -1,7 +1,10 @@
 package com.ezderm.solution.model;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
+
+import com.ezderm.solution.utils.StatusAppointment;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +23,9 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 
-	private String date;
+	private LocalDate date;
 	private String time;
-	private String status;
+	private StatusAppointment status;
 
 	@ManyToMany
 	@JoinTable(name = "appointment_doctor", 
