@@ -1,7 +1,6 @@
 package com.ezderm.solution.model;
 
 import java.util.Set;
-import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,11 +14,14 @@ import lombok.Data;
 @Data
 public class Doctor {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
-	@Column(unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+	@Column(unique = true, nullable = false,name="USER_NAME")
 	private String username;
+	@Column(name = "FIRST_NAME")
 	private String firstName;
+	@Column(name = "LAST_NAME")
 	private String lastName;
 	@ManyToMany(mappedBy = "doctors")
 	private Set<Appointment> appointments;

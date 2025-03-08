@@ -1,12 +1,14 @@
 package com.ezderm.solution.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
-import java.util.UUID;
 
 import com.ezderm.solution.utils.StatusAppointment;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,11 +22,13 @@ import lombok.Data;
 @Data
 public class Appointment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
-
-	private LocalDate date;
-	private String time;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+	@Column(name = "DATE_TIME")
+	private LocalDateTime date;
+	@Column(name = "STATUS")
+	@Enumerated(EnumType.STRING)
 	private StatusAppointment status;
 
 	@ManyToMany
