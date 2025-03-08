@@ -54,3 +54,4 @@ build/
 
 ezderm-service/target/
 ezderm-service/target/maven-status/maven-compiler-plugin/compile/default-compile/
+ezderm-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst

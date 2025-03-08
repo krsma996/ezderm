@@ -15,8 +15,8 @@
 	<name>ezderm</name>
 	<description>Ezderm Parent Project </description>
 	<version>1.0.0</version>
-	
-	
+
+
 	<!-- MODULES -->
 	<modules>
 		<module>ezderm-service</module>
@@ -35,25 +35,29 @@
 
 	<dependencyManagement>
 		<dependencies>
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-dependencies</artifactId>
-					<version>${spring-boot.version}</version>
-					<type>pom</type>
-					<scope>import</scope>
-				</dependency>
-				<!-- OpenAPI 3 -->
-				<dependency>
-					<groupId>org.springdoc</groupId>
-					<artifactId>springdoc-openapi</artifactId>
-					<version>${springdoc.version}</version>
-					<type>pom</type>
-					<scope>import</scope>
-				</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- OpenAPI 3 -->
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi</artifactId>
+				<version>${springdoc.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-validation</artifactId>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
-	
+
+
 	<build>
 		<resources>
 			<resource>
