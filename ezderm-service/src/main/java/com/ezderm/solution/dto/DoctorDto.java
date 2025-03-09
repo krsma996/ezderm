@@ -20,9 +20,6 @@ public class DoctorDto {
     @EqualsAndHashCode.Include
     private Long id;
 	@NotNull
-	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Username of the doctor.")
-	private String username;
-	@NotNull
 	@Schema(requiredMode = RequiredMode.REQUIRED, description = "First name of the user.")
 	private String firstName;
 	@NotNull

@@ -5,7 +5,7 @@ import com.ezderm.solution.dto.DoctorDto;
 public interface DoctorService {
 	
 	
-	DoctorDto saveDoctor(DoctorDto doctorDto);
+	DoctorDto saveDoctor(DoctorDto doctorDto,String userName);
 	
 	void deleteDoctor(Long doctorId);
 

@@ -24,7 +24,7 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Override
 	@Transactional
-	public DoctorDto saveDoctor(DoctorDto doctorDto) {
+	public DoctorDto saveDoctor(DoctorDto doctorDto,String userName) {
 		Optional<Doctor> existingDoctorOpt = this.doctorDao.findById(doctorDto.getId());
 	    Doctor doctor;
 	    if (existingDoctorOpt.isPresent()) {
@@ -36,11 +36,10 @@ public class DoctorServiceImpl implements DoctorService {
 	    }
 	    doctor.setFirstName(doctorDto.getFirstName());
 	    doctor.setLastName(doctorDto.getLastName());
-	    doctor.setUsername(doctorDto.getUsername());
+	    doctor.setUsername(userName);
 	    doctor = this.doctorDao.save(doctor);
-	    log.info("Saved doctor with ID: {}", doctor.getId());
-	    
-	    return new DoctorDto(doctor.getId(),doctor.getUsername(),doctor.getFirstName(),doctor.getLastName());
+	    log.info("Saved doctor with ID: {}", doctor.getId());	    
+	    return new DoctorDto(doctor.getId(),doctor.getFirstName(),doctor.getLastName());
 	    
 	}
 
