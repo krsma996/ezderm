@@ -14,7 +14,7 @@ public class SwaggerConfig {
 	@Bean
     public OpenAPI appApiDoc() {
         OpenAPI apiDoc = new OpenAPI();
-        apiDoc.info(new Info().title("Ezderm and access API")
+        apiDoc.info(new Info().title("Ezderm access API")
                               .description("Ezderm and access  API - Ezderm management")
                               .version("1.0.0")
                               .license(new License().name("Copyright by ezderm")

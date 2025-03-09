@@ -1,6 +1,5 @@
 package com.ezderm.solution.web.api;
 
-
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.ezderm.solution.dto.DoctorDto;
+import com.ezderm.solution.dto.PatientDto;
 import com.ezderm.solution.errors.RestErrors;
 import com.ezderm.solution.utils.ApplicationConstants;
 
@@ -22,32 +21,29 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-
-
-@Tag(name = ApplicationConstants.DOCTOR_API_TAG, description = "The API for managing Doctor entities")
-public interface DoctorApi {
-
+@Tag(name = ApplicationConstants.PATIENT_API_TAG, description = "The API for managing Patient entities")
+public interface PatientApi {
 	
-	@Operation(summary = "Create doctor", description = "Create doctor in local DB")
+	
+	@Operation(summary = "Create Patient", description = "Create Patient in local DB")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = DoctorDto.class))),
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = PatientDto.class))),
             @ApiResponse(responseCode = "400", description = "Bad request, invalid input or parameters", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "404", description = "Resource not found, invalid key", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "500", description = "Internal error, something went wrong", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))) })
-    @PostMapping(value = "/doctor", produces = { MediaType.APPLICATION_JSON_VALUE })
-	ResponseEntity<DoctorDto> createDoctor(@Valid @RequestBody(required = true) DoctorDto doctorDto);
-
-
-	@Operation(summary = "Delete doctor", description = "Delete doctor in local DB")
+    @PostMapping(value = "/patient", produces = { MediaType.APPLICATION_JSON_VALUE })
+	ResponseEntity<PatientDto> createPatient(@Valid @RequestBody(required = true) PatientDto patientDto);
+	
+	
+	@Operation(summary = "Delete Patient", description = "Delete Patient in local DB")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = DoctorDto.class))),
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = PatientDto.class))),
             @ApiResponse(responseCode = "400", description = "Bad request, invalid input or parameters", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "404", description = "Resource not found, invalid key", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "500", description = "Internal error, something went wrong", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))) })
-    @DeleteMapping(value = "/doctor/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	ResponseEntity<Void> deleteDoctor(@Parameter(in = ParameterIn.PATH, description = "Doctor ID", required = true) @PathVariable("id") Long id);
-
+    @DeleteMapping(value = "/patient/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	ResponseEntity<Void> deletePatient(@Parameter(in = ParameterIn.PATH, description = "Patient ID", required = true) @PathVariable("id") Long id);
 
 }

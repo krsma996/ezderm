@@ -1,6 +1,7 @@
 package com.ezderm.solution.web;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,5 +28,15 @@ public class DoctorController implements DoctorApi {
 	    }
 	    return ResponseEntity.ok().headers(headers).body(savedDoctor);
 	}
+
+
+	@Override
+	public ResponseEntity<Void> deleteDoctor(Long id) {
+		this.doctorService.deleteDoctor(id);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+
+
+	
 
 }

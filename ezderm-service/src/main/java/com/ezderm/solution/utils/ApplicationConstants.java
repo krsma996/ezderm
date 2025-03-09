@@ -4,4 +4,5 @@ public class ApplicationConstants {
 
 	public static final String APPOINTMENT_API_TAG = "Appointment API";
 	public static final String DOCTOR_API_TAG="Doctor API";
+	public static final String PATIENT_API_TAG="Patient API";
 }

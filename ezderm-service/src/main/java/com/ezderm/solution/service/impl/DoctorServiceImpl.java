@@ -2,11 +2,11 @@ package com.ezderm.solution.service.impl;
 
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.ezderm.solution.dao.DoctorDao;
 import com.ezderm.solution.dto.DoctorDto;
+import com.ezderm.solution.exception.ResourceNotFoundException;
 import com.ezderm.solution.model.Doctor;
 import com.ezderm.solution.service.DoctorService;
 
@@ -40,7 +40,18 @@ public class DoctorServiceImpl implements DoctorService {
 	    doctor = this.doctorDao.save(doctor);
 	    log.info("Saved doctor with ID: {}", doctor.getId());
 	    
-	    return new DoctorDto(doctor.getId(), doctor.getFirstName(), doctor.getLastName(), doctor.getUsername());
+	    return new DoctorDto(doctor.getId(),doctor.getUsername(),doctor.getFirstName(),doctor.getLastName());
+	    
+	}
+
+
+	@Override
+	@Transactional
+	public void deleteDoctor(Long doctorId) {
+		 Doctor doctor = this.doctorDao.findById(doctorId)
+			        .orElseThrow(() -> new ResourceNotFoundException("Doctor with ID " + doctorId + " not found"));
+		 log.info("Deleting doctor with ID: {}",doctorId);
+		 this.doctorDao.delete(doctor);
 	}
 
 }

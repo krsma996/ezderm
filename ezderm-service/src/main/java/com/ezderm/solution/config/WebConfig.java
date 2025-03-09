@@ -11,7 +11,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.ezderm.solution.utils.CustomHttpHeaders;
 
 @Configuration
-public class SecurityConfig {
+public class WebConfig {
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {

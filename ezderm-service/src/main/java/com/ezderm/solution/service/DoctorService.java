@@ -6,5 +6,7 @@ public interface DoctorService {
 	
 	
 	DoctorDto saveDoctor(DoctorDto doctorDto);
+	
+	void deleteDoctor(Long doctorId);
 
 }
