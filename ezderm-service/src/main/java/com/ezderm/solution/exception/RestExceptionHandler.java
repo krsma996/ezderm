@@ -44,12 +44,22 @@ public class RestExceptionHandler {
 	    return new RestErrors("Duplicate Username", "The username already exists.");
 	}
 	
+	
+	
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public RestErrors handleDbIndexException(final DuplicateKeyException e) {
         logException(e);
         return new RestErrors("Duplicate Entry", "The resource already exists. Please provide unique data.");
+    }
+    
+    
+    @ExceptionHandler(DuplicateUsernameException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public RestErrors handleDuplicateUsernameException(DuplicateUsernameException e) {
+        logException(e);
+        return new RestErrors("Duplicate Username", e.getMessage());
     }
 
     @ExceptionHandler
