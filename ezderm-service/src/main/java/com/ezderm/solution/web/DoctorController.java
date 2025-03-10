@@ -26,9 +26,9 @@ public class DoctorController implements DoctorApi {
 
 
 	@Override
-	public ResponseEntity<Void> deleteDoctor(Long id) {
-		this.doctorService.deleteDoctor(id);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+	public ResponseEntity<DoctorDto> deleteDoctor(String uuid,String userName) {
+		DoctorDto doctorDto = this.doctorService.deleteDoctor(uuid,userName);
+		return ResponseEntity.ok(doctorDto);
 	}
 
 

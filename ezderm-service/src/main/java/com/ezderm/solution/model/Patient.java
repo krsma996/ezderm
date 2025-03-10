@@ -18,6 +18,8 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
+	@Column(unique = true, nullable = false, name="UUID", updatable = false)
+	private String uuid;
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 	@Column(name = "MIDDLE_NAME")

@@ -8,8 +8,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.ezderm.solution.utils.CustomHttpHeaders;
-
 @Configuration
 public class WebConfig {
 
@@ -25,7 +23,7 @@ public class WebConfig {
 													  "Origin", "Cache-Control",
 													  "Content-Type", "Authorization"));
 		configuration.addExposedHeader("Content-Disposition");
-		configuration.addExposedHeader(CustomHttpHeaders.XUsername);
+		configuration.addExposedHeader("X-Username");
 		configuration.setAllowedMethods(Arrays.asList("DELETE", "GET", "POST", "PATCH", "PUT"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);

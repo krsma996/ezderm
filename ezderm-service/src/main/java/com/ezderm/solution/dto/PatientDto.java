@@ -22,6 +22,9 @@ public class PatientDto {
     @EqualsAndHashCode.Include
     private Long id;
 	@NotNull
+	@Schema(requiredMode = RequiredMode.REQUIRED, description = "UUID of Patinet")
+	private String uuid;
+	@NotNull
 	@Schema(requiredMode = RequiredMode.REQUIRED, description = "FirstName of the patient.")
 	private String firstName;
 	@NotNull

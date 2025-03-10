@@ -7,6 +7,6 @@ public interface PatientService {
 	
 	PatientDto createPatient(PatientDto patientDto,String userName);
 	
-	void deletePatient(Long id);
+	PatientDto deletePatient(String uuid,String userName);
 
 }

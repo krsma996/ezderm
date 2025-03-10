@@ -7,6 +7,6 @@ public interface DoctorService {
 	
 	DoctorDto saveDoctor(DoctorDto doctorDto,String userName);
 	
-	void deleteDoctor(Long doctorId);
+	DoctorDto deleteDoctor(String uuid,String userName);
 
 }

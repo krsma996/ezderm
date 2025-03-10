@@ -34,6 +34,7 @@ public interface DoctorApi {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = DoctorDto.class))),
             @ApiResponse(responseCode = "400", description = "Bad request, invalid input or parameters", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
+            @ApiResponse(responseCode = "401", description = "Unathorized", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),   
             @ApiResponse(responseCode = "404", description = "Resource not found, invalid key", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "500", description = "Internal error, something went wrong", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))) })
     @PostMapping(value = "/doctor", produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -42,13 +43,14 @@ public interface DoctorApi {
 
 	@Operation(summary = "Delete doctor", description = "Delete doctor in local DB")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = DoctorDto.class))),
+            @ApiResponse(responseCode = "200", description = "Doctor record deleted successfully", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = DoctorDto.class))),
             @ApiResponse(responseCode = "400", description = "Bad request, invalid input or parameters", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
-            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
-            @ApiResponse(responseCode = "404", description = "Resource not found, invalid key", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
+            @ApiResponse(responseCode = "401", description = "Username header missing", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
+            @ApiResponse(responseCode = "403", description = "User not authorized to delete this doctor record", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
+            @ApiResponse(responseCode = "404", description = "Doctor not found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "500", description = "Internal error, something went wrong", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))) })
     @DeleteMapping(value = "/doctor/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	ResponseEntity<Void> deleteDoctor(@Parameter(in = ParameterIn.PATH, description = "Doctor ID", required = true) @PathVariable("id") Long id);
+	ResponseEntity<DoctorDto> deleteDoctor(@Parameter(in = ParameterIn.PATH, description = "Doctor ID", required = true) @PathVariable("id") String uuid,@RequestHeader("X-Username") String userName);
 
 
 }

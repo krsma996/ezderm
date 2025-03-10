@@ -45,6 +45,6 @@ public interface PatientApi {
             @ApiResponse(responseCode = "404", description = "Resource not found, invalid key", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))),
             @ApiResponse(responseCode = "500", description = "Internal error, something went wrong", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = RestErrors.class))) })
     @DeleteMapping(value = "/patient/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	ResponseEntity<Void> deletePatient(@Parameter(in = ParameterIn.PATH, description = "Patient ID", required = true) @PathVariable("id") Long id);
+	ResponseEntity<PatientDto> deletePatient(@Parameter(in = ParameterIn.PATH, description = "Patient ID", required = true) @PathVariable("id") String uuid,@RequestHeader("X-Username") String userName);
 
 }

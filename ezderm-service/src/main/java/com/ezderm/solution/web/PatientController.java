@@ -1,6 +1,5 @@
 package com.ezderm.solution.web;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +23,9 @@ public class PatientController implements PatientApi {
 	}
 
 	@Override
-	public ResponseEntity<Void> deletePatient(Long id) {
-		this.patientService.deletePatient(id);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+	public ResponseEntity<PatientDto> deletePatient(String uuid,String userName) {
+		PatientDto deletedPatient = this.patientService.deletePatient(uuid,userName);
+		return ResponseEntity.ok(deletedPatient);
 	}
 
 }

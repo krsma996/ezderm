@@ -25,6 +25,8 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
+	@Column(unique = true, nullable = false, name="UUID", updatable = false)
+	private String uuid;
 	@Column(name = "DATE_TIME")
 	private LocalDateTime date;
 	@Column(name = "STATUS")

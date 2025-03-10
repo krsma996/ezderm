@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Component;
 
+import com.ezderm.solution.exception.InvalidUsernameException;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -23,13 +25,16 @@ public class CustomHeaderFilter implements Filter {
 		
 		HttpServletRequest httpRequest  = (HttpServletRequest) request;
 		HttpServletResponse httpResponse  = (HttpServletResponse) response;
+		String xUsername = httpRequest.getHeader("X-Username");		
+		String uuidPattern = "^[a-zA-Z0-9_]{4,32}$";
 		
-		String xUsername = httpRequest.getHeader("X-Username");
-		
-		if(xUsername==null || xUsername.isEmpty()) {
-			  httpResponse.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing X-Username header");
-			  return;
-		}
+		if (xUsername == null || xUsername.isEmpty()) {
+            throw new InvalidUsernameException("Missing X-Username header");
+        }
+
+        if (!xUsername.matches(uuidPattern)) {
+            throw new InvalidUsernameException("Invalid X-Username format");
+        }
         httpResponse.setHeader("X-Username", xUsername);
         chain.doFilter(request, response);	
 	}

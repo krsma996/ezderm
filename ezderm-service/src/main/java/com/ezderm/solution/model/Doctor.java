@@ -17,6 +17,8 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
+	@Column(unique = true, nullable = false, name="UUID", updatable = false)
+	private String uuid;
 	@Column(unique = true, nullable = false,name="USER_NAME")
 	private String username;
 	@Column(name = "FIRST_NAME")
