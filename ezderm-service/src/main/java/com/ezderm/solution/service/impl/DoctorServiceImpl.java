@@ -29,7 +29,6 @@ public class DoctorServiceImpl implements DoctorService {
 		if (this.doctorDao.existsByUsername(userName)) {
 			throw new DuplicateUsernameException(" Username " + userName + " Already Exsist ");
 		}
-
 		Optional<Doctor> existingDoctorOpt = this.doctorDao.findById(doctorDto.getId());
 		Doctor doctor;
 		if (existingDoctorOpt.isPresent()) {
@@ -45,7 +44,7 @@ public class DoctorServiceImpl implements DoctorService {
 		doctor.setUuid(doctorDto.getUuid());
 		doctor = this.doctorDao.save(doctor);
 		log.info("Saved doctor with ID: {}", doctor.getId());
-		return new DoctorDto(doctor.getId(), doctor.getUuid(), doctor.getFirstName(), doctor.getLastName());
+		return new DoctorDto(doctor.getId(), doctor.getUuid(), doctor.getFirstName(), doctor.getLastName(),doctor.getUsername());
 
 	}
 
@@ -61,7 +60,7 @@ public class DoctorServiceImpl implements DoctorService {
 	    }	
 		log.info("Deleting doctor with ID: {}", uuid);
 		this.doctorDao.delete(doctor);
-		return new DoctorDto(doctor.getId(),doctor.getUuid(),doctor.getFirstName(),doctor.getLastName());
+		return new DoctorDto(doctor.getId(),doctor.getUuid(),doctor.getFirstName(),doctor.getLastName(),doctor.getUsername());
 	}
 
 }

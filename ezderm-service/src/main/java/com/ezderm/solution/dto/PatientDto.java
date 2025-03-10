@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
@@ -15,6 +16,7 @@ import lombok.ToString;
 @ToString(callSuper = false)
 @Schema(description = "Represents a patient object")
 @AllArgsConstructor
+@NoArgsConstructor
 public class PatientDto {
 
 	@NotNull

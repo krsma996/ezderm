@@ -32,7 +32,6 @@ public class Appointment {
 	@Column(name = "STATUS")
 	@Enumerated(EnumType.STRING)
 	private StatusAppointment status;
-
 	@ManyToMany
 	@JoinTable(name = "appointment_doctor", 
 			   joinColumns = @JoinColumn(name = "appointment_id"), 

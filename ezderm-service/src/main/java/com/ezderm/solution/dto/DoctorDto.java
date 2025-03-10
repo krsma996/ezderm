@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
@@ -13,6 +14,7 @@ import lombok.ToString;
 @ToString(callSuper = false)
 @Schema(description = "Represents a doctor object")
 @AllArgsConstructor
+@NoArgsConstructor
 public class DoctorDto {
 	
 	@NotNull
@@ -28,5 +30,6 @@ public class DoctorDto {
 	@NotNull
 	@Schema(requiredMode = RequiredMode.REQUIRED, description = "Last name of the user.")
 	private String lastName;
-
+	@Schema(requiredMode = RequiredMode.NOT_REQUIRED, description = "Last name of the user.")
+	private String userName;
 }
