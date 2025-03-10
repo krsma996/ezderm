@@ -2,6 +2,7 @@ package com.ezderm.solution.service.impl;
 
 import java.util.Optional;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.ezderm.solution.dao.DoctorDao;
@@ -25,6 +26,10 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	@Transactional
 	public DoctorDto saveDoctor(DoctorDto doctorDto,String userName) {
+		if(this.doctorDao.existsByUsername(userName)) {
+			throw new DataIntegrityViolationException(" Username " + userName + " Already Exsist ");
+		}
+		
 		Optional<Doctor> existingDoctorOpt = this.doctorDao.findById(doctorDto.getId());
 	    Doctor doctor;
 	    if (existingDoctorOpt.isPresent()) {

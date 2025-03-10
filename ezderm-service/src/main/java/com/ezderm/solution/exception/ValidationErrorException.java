@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ValidationErrorException extends RuntimeException {
 
     private static final long serialVersionUID = -5493553258413800721L;
-
-    public ValidationErrorException() {
-        super("Validation error");
-    }
-
     public ValidationErrorException(String message) {
         super(message);
     }

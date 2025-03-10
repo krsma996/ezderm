@@ -6,5 +6,7 @@ import com.ezderm.solution.dao.custom.PatinentDaoCustom;
 import com.ezderm.solution.model.Patient;
 
 public interface PatientDao extends JpaRepository<Patient, Long> ,PatinentDaoCustom{
+	
+	
 
 }

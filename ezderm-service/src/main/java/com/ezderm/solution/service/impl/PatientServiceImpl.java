@@ -24,7 +24,7 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	@Transactional
-	public PatientDto createPatient(PatientDto patientDto) {
+	public PatientDto createPatient(PatientDto patientDto,String userName) {
 		Optional<Patient> existingPatientOpt = this.patientDao.findById(patientDto.getId());
 		Patient patient;
 		if (existingPatientOpt.isPresent()) {

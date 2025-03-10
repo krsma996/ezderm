@@ -42,4 +42,5 @@ public class RestErrors {
     	this.messageTitle = messageTitle;
     	this.subcode = subcode;
 	}
+	
 }

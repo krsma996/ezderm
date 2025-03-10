@@ -6,5 +6,7 @@ import com.ezderm.solution.dao.custom.DoctorDaoCustom;
 import com.ezderm.solution.model.Doctor;
 
 public interface DoctorDao extends JpaRepository<Doctor, Long>,DoctorDaoCustom {
+	
+	boolean existsByUsername(String username);
 
 }

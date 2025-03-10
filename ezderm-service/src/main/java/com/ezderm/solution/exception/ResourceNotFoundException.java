@@ -3,11 +3,7 @@ package com.ezderm.solution.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-/**
- * Exception thrown in case when resource could not be found.
- *
- * @author sbocanji
- */
+
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Resource could not be found")
 public class ResourceNotFoundException extends RuntimeException {
 

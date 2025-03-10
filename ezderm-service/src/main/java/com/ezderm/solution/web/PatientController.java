@@ -18,8 +18,8 @@ public class PatientController implements PatientApi {
 	private final PatientService patientService;
 	
 	@Override
-	public ResponseEntity<PatientDto> createPatient(@Valid PatientDto patientDto) {
-		PatientDto savedPatient = this.patientService.createPatient(patientDto);
+	public ResponseEntity<PatientDto> createPatient(@Valid PatientDto patientDto,String userName) {
+		PatientDto savedPatient = this.patientService.createPatient(patientDto,userName);
 	    return ResponseEntity.ok(savedPatient);
 	}
 
